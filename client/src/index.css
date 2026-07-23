@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Skeleton shimmer loader */
+.skeleton {
+  background: linear-gradient(90deg, theme('colors.ink.100') 25%, theme('colors.ink.200') 37%, theme('colors.ink.100') 63%);
+  background-size: 800px 100%;
+}
+.dark .skeleton {
+  background: linear-gradient(90deg, theme('colors.ink.800') 25%, theme('colors.ink.700') 37%, theme('colors.ink.800') 63%);
+  background-size: 800px 100%;
+}
+
+/* Torn / perforated receipt edge — the app's signature visual motif */
+.receipt-edge-bottom {
+  mask-image: radial-gradient(circle 6px at 12px 100%, transparent 6px, black 6.5px);
+  -webkit-mask-image: radial-gradient(circle 6px at 12px 100%, transparent 6px, black 6.5px);
+  mask-repeat: repeat-x;
+  -webkit-mask-repeat: repeat-x;
+  mask-size: 24px 100%;
+  -webkit-mask-size: 24px 100%;
+}
+
+.perforation {
+  background-image: repeating-linear-gradient(
+    to right,
+    theme('colors.ink.300') 0,
+    theme('colors.ink.300') 4px,
+    transparent 4px,
+    transparent 10px
+  );
+  height: 1px;
+}
+.dark .perforation {
+  background-image: repeating-linear-gradient(
+    to right,
+    theme('colors.ink.700') 0,
+    theme('colors.ink.700') 4px,
+    transparent 4px,
+    transparent 10px
+  );
+}
+
+.input {
+  @apply w-full rounded-lg border border-ink-200 dark:border-ink-700 bg-white dark:bg-ink-800
+    px-3 py-2 text-sm text-ink-800 dark:text-ink-100 placeholder:text-ink-400
+    focus:border-teal-500 focus:ring-1 focus:ring-teal-500 outline-none transition-colors;
+}
+
+::selection {
+  background: theme('colors.coral.200');
+}
+
+:focus-visible {
+  outline: 2px solid theme('colors.coral.500');
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
